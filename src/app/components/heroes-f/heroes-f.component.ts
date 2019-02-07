@@ -9,18 +9,21 @@ import { HeroesService, Heroe} from '../../services/heroes.service';
 export class HeroesFComponent implements OnInit {
 
   heroes:Heroe[]=[];
-
+  termino:string;
   constructor(private activatedRoute:ActivatedRoute,
               private _heroesService: HeroesService) {
 
-      this.activatedRoute.params.subscribe( params =>{
-        //console.log( params['filtro'] );
-        this.heroes = this._heroesService.buscarHeroes(params['filtro']);
-      } )
 
   }
 
   ngOnInit() {
+
+    this.activatedRoute.params.subscribe( params =>{
+      //console.log( params['filtro'] );
+      this.heroes = this._heroesService.buscarHeroes(params['filtro']);
+      this.termino= params['filtro'];
+    } )
+
   }
 
 }
