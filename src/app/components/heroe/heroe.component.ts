@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HeroesService} from '../../services/heroes.service';
+import { HeroesService, Heroe} from '../../services/heroes.service';
 
 @Component({
   selector: 'app-heroe',
@@ -8,17 +8,15 @@ import { HeroesService} from '../../services/heroes.service';
 })
 export class HeroeComponent  {
 
-  heroe:any={};
+  heroe:Heroe;
 
   constructor( private activatedRoute:ActivatedRoute,
                private _heroesService: HeroesService
    ) {
       this.activatedRoute.params.subscribe( params =>{
-        console.log( params['id'] );
+        // console.log( params['id'] );
         this.heroe = this._heroesService.getHeroe (params ['id']);
       } )
    }
-
-
 
 }
